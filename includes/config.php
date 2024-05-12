@@ -1,7 +1,6 @@
 <?php
-$connection = mysqli_connect("localhost", "username", "password", "padel_club");
-
-if(!$connection) {
+$connection = mysqli_connect("localhost", "root", "", "padel_club");
+session_start();
+if (!$connection) {
     die("Errore di connessione al database: " . mysqli_connect_error());
 }
-?>

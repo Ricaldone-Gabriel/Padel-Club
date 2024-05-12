@@ -33,7 +33,7 @@ if (isset($_POST['add_player'])) {
 include('partials/header.php'); ?>
 
 <body class="bodyBackground">
-    <title>Presentazione</title>
+    <title>Home</title>
     <?php include('partials/navbar.php'); ?>
     <?php
     include('partials/footer.php');
