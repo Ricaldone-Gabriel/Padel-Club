@@ -3,6 +3,7 @@
     src: url('Rubik-Bold.ttf');
 }
 
-body {
+.bodyBackground {
     font-family: 'Rubik';
+    background-color: red;
 }

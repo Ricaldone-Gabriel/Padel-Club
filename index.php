@@ -32,7 +32,8 @@ if (isset($_POST['add_player'])) {
 
 include('partials/header.php'); ?>
 
-<body>
+<body class="bodyBackground">
+    <title>Home</title>
     <?php include('partials/navbar.php'); ?>
     <?php
     include('partials/footer.php');
