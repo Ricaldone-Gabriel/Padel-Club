@@ -1,38 +1,30 @@
 CREATE TABLE Socio (
   ID int(50) NOT NULL AUTO_INCREMENT,
-  Nome varchar(50) NOT NULL,
-  Email varchar(30) unique not null,
+  Nome varchar(50) unique NOT NULL,
   DataNascita date NOT NULL,
-  Cliente_CF varchar(50),
+  Password varchar(50) NOT NULL,
   PRIMARY KEY (ID)
 );
 
 CREATE TABLE Campo (
-  Targa varchar(50) NOT NULL,
-  Modello varchar(50) DEFAULT NULL,
-  Marca varchar(50) DEFAULT NULL,
-  Colore varchar(50) DEFAULT NULL,
-  Cliente_CF varchar(50),
-  PRIMARY KEY (Targa)
+  ID int(50) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (ID)
 );
 
 CREATE TABLE Prenotazione (
   ID int(50) NOT NULL AUTO_INCREMENT,
-  Nome varchar(50) DEFAULT NULL,
-  Cognome varchar(50) DEFAULT NULL,
-  Data_di_nascita date DEFAULT NULL,
-  Squadra_ID int(11) DEFAULT NULL,
-  RCA_ID varchar(50),
-  Automobile_Targa varchar(50),
-  PRIMARY KEY (CF)
+  CodiceSocio varchar(50) NOT NULL,
+  CodiceCampo varchar(50) NOT NULL,
+  DataPrenotazione datetime NOT NULL, /* format: YYYY-MM-DD HH:MI:SS */
+  PRIMARY KEY (ID)
 );
 
-ALTER TABLE Cliente
-ADD FOREIGN KEY (RCA_ID) REFERENCES RCA(ID),
-ADD FOREIGN KEY (Automobile_Targa) REFERENCES Automobile(Targa);
+/* INSERT INTO Prenotazione */
 
-ALTER TABLE RCA
-ADD FOREIGN KEY (Cliente_CF) REFERENCES Cliente(CF);
+/*
+SELECT Count(CodiceSocio) FROM ... WHERE DataPrenotazione = ... and CodiceCampo = ...
+*/
 
-ALTER TABLE Automobile
-ADD FOREIGN KEY (Cliente_CF) REFERENCES Cliente(CF);
+ALTER TABLE Prenotazione
+ADD FOREIGN KEY (CodiceSocio) REFERENCES Socio(ID),
+ADD FOREIGN KEY (CodiceCampo) REFERENCES Campo(ID);
