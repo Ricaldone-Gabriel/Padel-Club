@@ -13,8 +13,8 @@ CREATE TABLE Campo (
 
 CREATE TABLE Prenotazione (
   ID int(50) NOT NULL AUTO_INCREMENT,
-  CodiceSocio varchar(50) NOT NULL,
-  CodiceCampo varchar(50) NOT NULL,
+  CodiceSocio int(50) NOT NULL,
+  CodiceCampo int(50) NOT NULL,
   DataPrenotazione datetime NOT NULL, /* format: YYYY-MM-DD HH:MI:SS */
   PRIMARY KEY (ID)
 );
