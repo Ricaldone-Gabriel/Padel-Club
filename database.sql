@@ -19,7 +19,7 @@ CREATE TABLE Prenotazione (
   PRIMARY KEY (ID)
 );
 
-/* INSERT INTO Prenotazione */
+/* INSERT INTO Prenotazione (CodiceSocio, CodiceCampo, DataPrenotazione) VALUES ("","","")*/
 
 /*
 SELECT Count(CodiceSocio) FROM ... WHERE DataPrenotazione = ... and CodiceCampo = ...
