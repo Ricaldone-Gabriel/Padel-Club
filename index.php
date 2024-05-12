@@ -30,7 +30,13 @@ if(isset($_POST['add_player'])) {
     add_player_to_booking($booking_id, $player_name);
 }
 
-include('partials/header.php');
+include('partials/header.php');?>
+
+<body>
+    <?php include('partials/navbar.php');?>
+</body>
+
+<?php
 include('partials/footer.php');
 //idea, faccio copia e incolla e faccio il commit
 
