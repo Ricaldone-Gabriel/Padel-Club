@@ -18,6 +18,9 @@ if (isset($_POST["Impegna"])) {
 function register_user($username, $password, $birth_date/*, $email*/)
 {
     global $connection;
+    session_unset();
+    session_destroy();
+    session_start();
     $query = "SELECT Nome FROM Socio WHERE Nome ='" . $username . "'";
     if (!$risultato = $connection->query($query)) {
         //Aggiungere redirect
@@ -25,9 +28,22 @@ function register_user($username, $password, $birth_date/*, $email*/)
         if ($risultato->num_rows > 0) {
             //redirect al login
         } else {
-            $query = "INSERT INTO Socio (Nome, DataNascita,Password) VALUES('" . $username . "','" .  $birth_date . "','" . $password . "')";
+            $query = "INSERT INTO Socio (Nome, DataNascita,Password) VALUES('" . $username . "','" . $birth_date . "','" . $password . "')";
             $connection->query($query);
-            $_SESSION['username'] = $username;
+            $_SESSION['Nome'] = $username;
+
+            $query = "SELECT Nome, ID FROM Socio WHERE Nome ='" . $username . "' AND Password = '" . $password . "'";
+            if (!$risultato = $connection->query($query)) {
+                echo $query;
+            } else {
+                if ($risultato->num_rows > 0) {
+                    foreach ($risultato as $record) {
+                        $_SESSION['ID'] = $record['ID'];
+                    }
+                } else {
+                    //redirect a login
+                }
+            }
         }
     }
 }
@@ -35,6 +51,9 @@ function register_user($username, $password, $birth_date/*, $email*/)
 function login_user($username, $password)
 {
     global $connection;
+    session_unset();
+    session_destroy();
+    session_start();
     $query = "SELECT Nome, ID FROM Socio WHERE Nome ='" . $username . "' AND Password = '" . $password . "'";
     if (!$risultato = $connection->query($query)) {
         echo $query;
@@ -63,7 +82,7 @@ function add_player_to_booking($booking_id, $player_name)
 function get_booking($player_name)
 {
     global $connection;
-    $query = "SELECT CodiceCampo, DataPrenotazione FROM Socio, Prenotazione WHERE Nome ='" . $player_name . "' AND Socio.ID = Prenotazione.CodiceSocio";
+    $query = "SELECT Nome, CodiceCampo, DataPrenotazione, OraPrenotazione FROM Socio, Prenotazione WHERE Nome ='" . $player_name . "' AND Socio.ID = Prenotazione.CodiceSocio ORDER BY DataPrenotazione, OraPrenotazione DESC";
     if (!$risultato = $connection->query($query)) {
         echo $query;
     } else {

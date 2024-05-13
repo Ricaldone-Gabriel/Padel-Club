@@ -1,6 +1,6 @@
 <?php
-include('./includes/config.php');
-include('./includes/functions.php');
+include ('./includes/config.php');
+include ('./includes/functions.php');
 
 if (isset($_POST['submit_registration'])) {
     $username = $_POST['username'];
@@ -17,40 +17,59 @@ if (isset($_POST['submit_login'])) {
 }
 
 if (isset($_POST['submit_booking'])) {
-    $hour = $_POST['hour'];
-    $player1 = $_POST['player1'];
-    $player2 = $_POST['player2'];
-    $player3 = $_POST['player3'];
-    $player4 = $_POST['player4'];
-    book_slot($hour, $player1, $player2, $player3, $player4);
-}
+    $data_prenotazione = $_POST['date'];
+    $ora_prenotazione = $_POST['time'];
+    $campo = $_POST['campo'];
 
-if (isset($_POST['add_player'])) {
-    $booking_id = $_POST['booking_id'];
-    $player_name = $_POST['player_name'];
-    add_player_to_booking($booking_id, $player_name);
+    $query = "SELECT COUNT(*) AS num_prenotazioni FROM Prenotazione WHERE DataPrenotazione = '$data_prenotazione $ora_prenotazione' AND CodiceCampo = $campo";
+    $result = mysqli_query($connection, $query);
+    $row = mysqli_fetch_assoc($result);
+
+    $num_prenotazioni = $row['num_prenotazioni'];
+
+    if ($num_prenotazioni < 4) {
+        $codice_socio = $_SESSION['ID'];
+
+        // Inserisci i dati nella tabella Prenotazione
+        $insert_query = "INSERT INTO Prenotazione (CodiceSocio, CodiceCampo, DataPrenotazione, OraPrenotazione) VALUES ($codice_socio, '$campo', '$data_prenotazione', '$ora_prenotazione')";
+        $insert_result = mysqli_query($connection, $insert_query);
+
+        if ($insert_result) {
+            echo "Prenotazione effettuata con successo!";
+        } else {
+            echo "Si è verificato un errore durante la prenotazione: " . mysqli_error($connection);
+        }
+    } else {
+        echo "Il campo è già pieno per quell'orario.";
+    }
 }
 ?>
 
-<?php include('./partials/header.php') ?>
+<?php include ('./partials/header.php') ?>
 
 <body class="bodyBackground d-flex flex-column min-vh-100">
-    <?php include('./partials/navbarLogged.php') ?>
+    <?php include ('./partials/navbarLogged.php') ?>
 
     <div class="container">
         <h2>Prenota un Campo</h2>
-        <form action="dashboard.php" method="post">
-            <label for="hour">Seleziona l'orario:</label>
-            <input type="datetime-local" id="hour" name="hour" required>
+        <form   method="post"> <!-- action="dashboard.php" -->
+            <label for="date">Seleziona la data:</label>
+            <input type="date" id="date" name="date" required>
 
-            <option id="option">
-                <select id="1">
-                    campo1
-                </select>
-            </option>
+            <label for="time">Seleziona l'orario:</label>
+            <input type="time" id="time" name="time" min="08:00:00" max="18:00:00" step="1800" required>
+            <br>
+
+            <label for="campo">Seleziona il campo:</label>
+            <select id="campo" name="campo">
+                <option value="1">Campo 1</option>
+                <option value="2">Campo 2</option>
+                <option value="3">Campo 3</option>
+                <option value="4">Campo 4</option>
+            </select>
 
             <input type="submit" name="submit_booking" value="Prenota">
         </form>
     </div>
 
-    <?php include('./partials/footer.php') ?>
+    <?php include ('./partials/footer.php') ?>
