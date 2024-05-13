@@ -90,6 +90,10 @@ include('partials/header.php') ?>
             </div>
         </div>
     </div>
+    <br><br><br><br><br><br><br><br>               
+    <div class="row d-flex align-items-center mt-4" style="width:10%">
+        <button type="button" class="btn btn-outline-danger">Log out</button>
+    </div>
 
 
     <?php include('partials/footer.php') ?>
