@@ -59,3 +59,21 @@ function add_player_to_booking($booking_id, $player_name)
 {
     global $connection;
 }
+
+function get_booking($player_name)
+{
+    global $connection;
+    $query = "SELECT CodiceCampo, DataPrenotazione FROM Socio, Prenotazione WHERE Nome ='" . $player_name . "' AND Socio.ID = Prenotazione.CodiceSocio";
+    if (!$risultato = $connection -> query($query)) {
+        echo $query;
+    } else {
+        if ($risultato->num_rows > 0) {
+            foreach ($risultato as $record) {
+                $_SESSION['Nome'] = $record['Nome'];
+                $_SESSION['ID'] = $record['ID'];
+            }
+        } else {
+            
+        }
+    }
+}
