@@ -35,7 +35,7 @@ include('partials/header.php'); ?>
 
 <body class="bodyBackground">
     <title>Home</title>
-    <?php include('partials/navbar.php'); ?>
+    <?php include('partials/navbarLogged.php'); ?>
     <?php
     include('partials/footer.php');
     //idea, faccio copia e incolla e faccio il commit
