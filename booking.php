@@ -1,6 +1,6 @@
 <?php
-include ('includes/config.php');
-include ('includes/functions.php');
+include('./includes/config.php');
+include('./includes/functions.php');
 
 if (isset($_POST['submit_registration'])) {
     $username = $_POST['username'];
@@ -42,10 +42,10 @@ if (isset($_POST['add_player'])) {
 }
 ?>
 
-<?php include ('partials/header.php') ?>
-<?php include ('partials/navbarLogged.php') ?>
+<?php include('./partials/header.php') ?>
 
-<body style="bodyBackground d-flex flex-column min-vh-100">
+<body class="bodyBackground d-flex flex-column min-vh-100">
+    <?php include('./partials/navbarLogged.php') ?>
 
     <div class="container">
         <h2>Prenota un Campo</h2>
@@ -65,6 +65,4 @@ if (isset($_POST['add_player'])) {
         </form>
     </div>
 
-</body>
-
-<?php include ('partials/footer.php') ?>
+    <?php include('./partials/footer.php') ?>

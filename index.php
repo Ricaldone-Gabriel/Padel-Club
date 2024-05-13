@@ -1,7 +1,7 @@
 <?php
 include('partials/header.php'); ?>
 
-<body class="bodyBackground">
+<body class="bodyBackground d-flex flex-column min-vh-100">
     <title>Ballin'</title>
     <?php include('partials/navbar.php'); ?>
     <div class="container-fluid">
@@ -13,4 +13,3 @@ include('partials/header.php'); ?>
         </div>
     </div>
     <?php include('partials/footer.php'); ?>
-</body>

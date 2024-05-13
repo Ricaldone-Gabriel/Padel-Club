@@ -1,7 +1,7 @@
 <?php include('../partials/header.php') ?>
 
 <body>
-    <form action="home.php" method="POST">
+    <form action="../home.php" method="POST">
         <section style="background-color: #eee;">
             <div class="container h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
