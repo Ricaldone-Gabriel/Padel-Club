@@ -1,5 +1,5 @@
 <?php
-if (isset($_session(['Nome']))) {
+if (isset($_session['Nome'])) {
     echo " <nav class='navbar navbar-expand-lg bg-body-tertiary'> ";
     echo " <div class='container-fluid'> ";
     echo " <a class='navbar-brand' href='index.php'> ";
