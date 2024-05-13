@@ -18,10 +18,20 @@ if (isset($_POST['submit_login'])) {
 
 if (isset($_POST['submit_booking'])) {
     $hour = $_POST['hour'];
-    $player1 = $_POST['player1'];
-    $player2 = $_POST['player2'];
-    $player3 = $_POST['player3'];
-    $player4 = $_POST['player4'];
+    $campo = $_POST['campo'];
+
+    $query = "SELECT COUNT(*) AS num_prenotazioni FROM Prenotazione WHERE DataPrenotazione = '$hour' AND CodiceCampo = $campo";
+    $result = mysqli_query($connection, $query);
+    $row = mysqli_fetch_assoc($result);
+    $num_prenotazioni = $row['num_prenotazioni'];
+
+    if ($num_prenotazioni < 4) {
+        // Esegui la prenotazione nel database
+        // ...
+        echo "Prenotazione effettuata con successo!";
+    } else {
+        echo "Il campo è già pieno per quell'orario.";
+    }
     book_slot($hour, $player1, $player2, $player3, $player4);
 }
 
@@ -40,14 +50,16 @@ if (isset($_POST['add_player'])) {
     <div class="container">
         <h2>Prenota un Campo</h2>
         <form action="dashboard.php" method="post">
-            <label for="hour">Seleziona l'orario:</label>
+            <label for="hour">Seleziona giorno e orario:</label>
             <input type="datetime-local" id="hour" name="hour" required>
-
-            <option id="option">
-                <select id="1">
-                    campo1
-                </select>
-            </option>
+            <br>
+            <label for="campo">Seleziona il campo:</label>
+            <select id="campo" name="campo">
+                <option value="1">Campo 1</option>
+                <option value="2">Campo 2</option>
+                <option value="3">Campo 3</option>
+                <option value="4">Campo 4</option>
+            </select>
 
             <input type="submit" name="submit_booking" value="Prenota">
         </form>
