@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-<?php include ('partials/navbarLogged.php') ?>
-<?php include ('includes/config.php') ?>
-<?php include ('includes/functions.php') ?>
-=======
 <?php include('includes/config.php') ?>
 <?php include('includes/functions.php') ?>
 <?php include('partials/navbar.php') ?>
->>>>>>> 5f72b142eca671672d4b5e370c4e0d593587253e
 <?php
 if (isset($_POST['submit_registration'])) {
     $username = $_POST['username'];
@@ -22,7 +16,7 @@ if (isset($_POST['submit_login'])) {
     login_user($username, $password);
 }
 
-include ('partials/header.php') ?>
+include('partials/header.php') ?>
 
 
 <body class="bodyBackground d-flex flex-column min-vh-100">
@@ -115,13 +109,8 @@ include ('partials/header.php') ?>
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-    <br><br><br><br><br><br><br><br>
-    <div class="row d-flex align-items-center mt-4" style="width:10%">
-        <button type="button" class="btn btn-outline-danger">Log out</button>
-    </div>
-=======
->>>>>>> 8fc5b099dcfb04b95f6ed75dd56e990cf51893bf
 
 
-    <?php include ('partials/footer.php') ?>
+
+
+    <?php include('partials/footer.php') ?>

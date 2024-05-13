@@ -51,7 +51,7 @@ if (isset($_POST['submit_booking'])) {
 <?php include('./partials/header.php') ?>
 
 <body class="bodyBackground d-flex flex-column min-vh-100">
-    <?php include('./partials/navbarLogged.php') ?>
+    <?php include('./partials/navbar.php') ?>
 
     <div class="container">
         <h2>Prenota un Campo</h2>

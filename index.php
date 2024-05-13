@@ -14,7 +14,10 @@ include('partials/header.php'); ?>
                 <div class="col-md-8 alignVert">
                     <div class="card-body align-middle">
                         <h5 class="card-title-index">Soci competitivi</h5>
-                        <p class="card-text-index">Unisciti al nostro club di padel! Campi moderni, insegnanti esperti e una comunità accogliente ti aspettano. Sia che tu sia un principiante o un professionista, troverai il divertimento e la competizione che cerchi. Iscriviti ora e vivi l'emozione del padel con noi!</p>
+                        <p class="card-text-index">Unisciti al nostro club di padel! Campi moderni, insegnanti esperti e
+                            una comunità accogliente ti aspettano. Sia che tu sia un principiante o un professionista,
+                            troverai il divertimento e la competizione che cerchi. Iscriviti ora e vivi l'emozione del
+                            padel con noi!</p>
                     </div>
                 </div>
                 <div class="col-md-4">
