@@ -17,29 +17,31 @@ if (isset($_POST['submit_login'])) {
 }
 
 if (isset($_POST['submit_booking'])) {
-    $date = $_POST['date'];
-    $time = $_POST['time'];
-    $campo = $_POST['campo']; 
+    $data_prenotazione = $_POST['date'];
+    $ora_prenotazione = $_POST['time'];
+    $campo = $_POST['campo'];
 
-    $query = "SELECT COUNT(*) AS num_prenotazioni FROM Prenotazione WHERE DataPrenotazione = '$hour' AND CodiceCampo = $campo";
+    $query = "SELECT COUNT(*) AS num_prenotazioni FROM Prenotazione WHERE DataPrenotazione = '$data_prenotazione $ora_prenotazione' AND CodiceCampo = $campo";
     $result = mysqli_query($connection, $query);
     $row = mysqli_fetch_assoc($result);
+
     $num_prenotazioni = $row['num_prenotazioni'];
 
     if ($num_prenotazioni < 4) {
-        // Esegui la prenotazione nel database
-        // ...
-        echo "Prenotazione effettuata con successo!";
+        $codice_socio = $_SESSION['ID'];
+
+        // Inserisci i dati nella tabella Prenotazione
+        $insert_query = "INSERT INTO Prenotazione (CodiceSocio, CodiceCampo, DataPrenotazione, OraPrenotazione) VALUES ($codice_socio, '$campo', '$data_prenotazione', '$ora_prenotazione')";
+        $insert_result = mysqli_query($connection, $insert_query);
+
+        if ($insert_result) {
+            echo "Prenotazione effettuata con successo!";
+        } else {
+            echo "Si è verificato un errore durante la prenotazione: " . mysqli_error($connection);
+        }
     } else {
         echo "Il campo è già pieno per quell'orario.";
     }
-    //book_slot($hour, $campo, $num_prenotazioni);
-}
-
-if (isset($_POST['add_player'])) {
-    $booking_id = $_POST['booking_id'];
-    $player_name = $_POST['player_name'];
-    add_player_to_booking($booking_id, $player_name);
 }
 ?>
 
@@ -50,7 +52,7 @@ if (isset($_POST['add_player'])) {
 
     <div class="container">
         <h2>Prenota un Campo</h2>
-        <form action="dashboard.php" method="post">
+        <form   method="post"> <!-- action="dashboard.php" -->
             <label for="date">Seleziona la data:</label>
             <input type="date" id="date" name="date" required>
 
