@@ -16,30 +16,12 @@ if (isset($_POST['submit_login'])) {
     login_user($username, $password);
 }
 
-if (isset($_POST['submit_booking'])) {
-    $hour = $_POST['hour'];
-    $player1 = $_POST['player1'];
-    $player2 = $_POST['player2'];
-    $player3 = $_POST['player3'];
-    $player4 = $_POST['player4'];
-    book_slot($hour, $player1, $player2, $player3, $player4);
-}
-
-if (isset($_POST['add_player'])) {
-    $booking_id = $_POST['booking_id'];
-    $player_name = $_POST['player_name'];
-    add_player_to_booking($booking_id, $player_name);
-}
 include('partials/header.php') ?>
 
 
 <body class="bodyBackground d-flex flex-column min-vh-100">
-
-    <div class="row mt-2">
-        <div class="col-2">
-
-        </div>
-        <div class="col">
+    <div class="row d-flex justify-content-center mt-4" style="width:100%">
+        <div class="col-md-6 m-0">
             <div class="card mb-3" style="max-width: 100%;">
                 <div class="row g-0">
                     <div class="col-md-2">
@@ -106,9 +88,6 @@ include('partials/header.php') ?>
                     ?>
                 </div>
             </div>
-        </div>
-        <div class="col-2">
-
         </div>
     </div>
 
