@@ -7,18 +7,35 @@
     font-family: 'Rubik';
 }
 
+.card{
+    --bs-card-border-width: 0px;
+}
+
+.alignVert{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card-title{
+    font-size: 48px;
+}
+
+.card-text{
+    font-size:xx-large;
+}
+
 .imgSection {
     background-repeat: no-repeat;
     background-size: cover;
+    height:100%;
+    width:100%;
 }
 
 .section  {
-    height:100vh;
+    height:100%;
 }
 
-#img1 {
-    background-image: url("../images/stock/sportsman-playing-padel-game.jpg");
-}
 
 footer {
   background-color: #f5f5f5;
