@@ -103,13 +103,19 @@ include ('partials/header.php') ?>
                     }
                     ?>
                 </div>
+                <div class="row d-flex justify-content-center mb-3">
+                    <button type="button" class="btn btn-outline-danger" style="width:50%">Log out</button>
+                </div>
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     <br><br><br><br><br><br><br><br>
     <div class="row d-flex align-items-center mt-4" style="width:10%">
         <button type="button" class="btn btn-outline-danger">Log out</button>
     </div>
+=======
+>>>>>>> 8fc5b099dcfb04b95f6ed75dd56e990cf51893bf
 
 
     <?php include ('partials/footer.php') ?>
