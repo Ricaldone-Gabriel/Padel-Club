@@ -63,7 +63,7 @@ function add_player_to_booking($booking_id, $player_name)
 function get_booking($player_name)
 {
     global $connection;
-    $query = "SELECT CodiceCampo, DataPrenotazione FROM Socio, Prenotazione WHERE Nome ='" . $player_name . "' AND Socio.ID = Prenotazione.CodiceSocio";
+    $query = "SELECT Nome, CodiceCampo, DataPrenotazione, OraPrenotazione FROM Socio, Prenotazione WHERE Nome ='" . $player_name . "' AND Socio.ID = Prenotazione.CodiceSocio ORDER BY DataPrenotazione, OraPrenotazione DESC";
     if (!$risultato = $connection->query($query)) {
         echo $query;
     } else {

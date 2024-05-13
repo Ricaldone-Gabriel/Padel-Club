@@ -21,40 +21,39 @@
     $result = get_booking($_SESSION['Nome']);
 
     if ($result->num_rows > 0) {
-        echo "<div class='table-responsive'>";
+        echo "<section class='intro'>";
+
+
+        echo "<div class='gradient-custom-1 h-100'>";
+        echo "<div class='mask d-flex align-items-center h-100'>";
+        echo "<div class='container'>";
+        echo "<div class='row justify-content-center'>";
+        echo "<div class='col-12'>";
+        echo "<div class='table-responsive bg-white'>";
+        echo "<caption>Prenotazioni campi</caption>";
         echo "<table class='table'>";
-        echo "<thead>";
-        echo "<tr><th scope='col'>Codice Campo</th><th scope='col'>Data Prenotazione</th></tr>";
-        echo "</thead>";
-        echo "<tbody>";
+        echo "<thead><tr><th scope='col'>Utente</th><th scope='col'>Campo</th><th scope='col'>Data</th><th scope='col'>Ora</th></thead><tbody>";
 
         while ($row = $result->fetch_assoc()) {
-            echo "<section class='intro'>";
-            echo "<div class='gradient-custom-1 h-100'>";
-            echo "<div class='mask d-flex align-items-center h-100'>";
-            echo "<div class='container'>";
-            echo "<div class='row justify-content-center'>";
-            echo "<div class='col-12'>";
-            echo "<div class='table-responsive bg-white'>";
-            echo "<table class='table'>";
-            echo "<thead><tr><th scope='col'>Utente</th><th scope='col'>Campo</th><th scope='col'>Data</th><th scope='col'>Ora</th></thead><tbody>";
 
-            while ($row = $result->fetch_assoc()) {
+            if (strtotime($row['DataPrenotazione'] . ' ' . $row['OraPrenotazione']) > time()) {
                 echo "<tr>";
-                echo "<th scope='row' style='color: #666666;'>" . $row['Nome'] . "</th>";
-                echo "<td>" . $row['Posizione'] . "</td>";
-                echo "<td>" . $row['Email'] . "</td>";
-                echo "<td>" . $row['Età'] . "</td>";
-                echo "<td>" . $row['Indirizzo'] . "</td>";
-                echo "<td>" . $row['Stipendio'] . "</td>";
+                echo "<th scope='row' style='color: #00B613;'>" . $row['Nome'] . "</th>";
+                echo "<td style='color: #00B613;'>" . $row['CodiceCampo'] . "</td>";
+                echo "<td style='color: #00B613;'>" . $row['DataPrenotazione'] . "</td>";
+                echo "<td style='color: #00B613;'>" . $row['OraPrenotazione'] . "</td>";
+                echo "</tr>";
+            } else {
+                echo "<tr>";
+                echo "<th scope='row' style='color: #A09F9F;'> " . $row['Nome'] . "</th>";
+                echo "<td style='color: #A09F9F;'>" . $row['CodiceCampo'] . "</td>";
+                echo "<td style='color: #A09F9F;'>" . $row['DataPrenotazione'] . "</td>";
+                echo "<td style='color: #A09F9F;'>" . $row['OraPrenotazione'] . "</td>";
                 echo "</tr>";
             }
-
-            echo "<tr>";
-            echo "<td>" . $row['CodiceCampo'] . "</td>";
-            echo "<td>" . $row['DataPrenotazione'] . "</td>";
-            echo "</tr>";
         }
+
+        echo "</tbody></table>";
 
         // Fine della tabella HTML
         echo "</tbody>";
