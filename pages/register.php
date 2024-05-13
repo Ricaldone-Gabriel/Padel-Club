@@ -49,7 +49,6 @@ include('../partials/header.php');
                                     </div>
                                     <div class="col-md-4 col-lg-6 col-xl-6 align-items-center order-1">
                                         <img src="../images/padel_image.png" class="img-fluid">
-                                        div
                                     </div>
 
                                 </div>
