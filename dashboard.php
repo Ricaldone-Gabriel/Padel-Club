@@ -1,6 +1,6 @@
-<?php include('partials/navbarLogged.php') ?>
 <?php include('includes/config.php') ?>
 <?php include('includes/functions.php') ?>
+<?php include('partials/navbar.php') ?>
 <?php
 if (isset($_POST['submit_registration'])) {
     $username = $_POST['username'];
