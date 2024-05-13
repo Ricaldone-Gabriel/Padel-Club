@@ -1,4 +1,4 @@
-<footer class="container-fluid">
+<footer class="container-fluid mt-auto">
     <div class="row pt-3 justify-content-md-center">
         <div class="col mx-3 col-lg-3">
             <p>Email: info@padelclub.com</p>
