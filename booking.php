@@ -1,6 +1,6 @@
 <?php
-include ('../includes/config.php');
-include ('../includes/functions.php');
+include ('includes/config.php');
+include ('includes/functions.php');
 
 if (isset($_POST['submit_registration'])) {
     $username = $_POST['username'];
@@ -32,8 +32,8 @@ if (isset($_POST['add_player'])) {
 }
 ?>
 
-<?php include ('../partials/header.php') ?>
-<?php include ('../partials/navbarLogged.php') ?>
+<?php include ('partials/header.php') ?>
+<?php include ('partials/navbarLogged.php') ?>
 
 <body style="bodyBackground d-flex flex-column min-vh-100">
 
@@ -55,4 +55,4 @@ if (isset($_POST['add_player'])) {
 
 </body>
 
-<?php include ('../partials/footer.php') ?>
+<?php include ('partials/footer.php') ?>
