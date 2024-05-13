@@ -34,12 +34,8 @@ if (isset($_POST['add_player'])) {
 include('partials/header.php'); ?>
 
 <body class="bodyBackground">
-    <title>Presentazione</title>
+    <title>Ballin'</title>
     <?php include('partials/navbar.php'); ?>
-    <?php
-    include('partials/footer.php');
-    //idea, faccio copia e incolla e faccio il commit
 
-    //mi ha fatto creare un mio repository
-    ?>
+    <?php include('partials/footer.php');?>
 </body>
