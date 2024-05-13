@@ -33,7 +33,7 @@ if (isset($_POST['add_player'])) {
 
 include('partials/header.php'); ?>
 
-<body class="bodyBackground">
+<body class="bodyBackground d-flex flex-column min-vh-100">
     <title>Home</title>
     <?php include('partials/navbarLogged.php'); ?>
     <?php
@@ -42,4 +42,3 @@ include('partials/header.php'); ?>
 
     //mi ha fatto creare un mio repository
     ?>
-</body>
