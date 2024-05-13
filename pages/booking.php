@@ -32,10 +32,10 @@ if (isset($_POST['add_player'])) {
 }
 ?>
 
-<?php include('../partials/header.php') ?>
-<?php include('../partials/navbarLogged.php') ?>
+<?php include ('../partials/header.php') ?>
+<?php include ('../partials/navbarLogged.php') ?>
 
-<body>
+<body style="bodyBackground d-flex flex-column min-vh-100">
 
     <div class="container">
         <h2>Prenota un Campo</h2>
@@ -55,4 +55,4 @@ if (isset($_POST['add_player'])) {
 
 </body>
 
-<?php include('../partials/footer.php') ?>
+<?php include ('../partials/footer.php') ?>
