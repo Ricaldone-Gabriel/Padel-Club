@@ -30,6 +30,13 @@ include('../partials/header.php');
                                                 </div>
                                             </div>
 
+                                            <div class="d-flex flex-row align-items-center mb-4">
+                                                <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                                                    <input type="date" id="birth-date" name="birth-date" class="form-control" min="1920-01-01" max="2006-12-31"/>
+                                                    <label class="form-label" for="birth-date">Data di nascita</label>
+                                                </div>
+                                            </div>
+
                                             <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                                 <button type="submit" name="submit_registration" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg">Registrati</button>
                                             </div>

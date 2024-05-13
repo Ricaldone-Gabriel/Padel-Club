@@ -16,14 +16,14 @@ if (isset($_POST["Impegna"])) {
 }
 */
 echo "Funziona1!";
-function register_user($username, $password/*, $email*/)
+function register_user($username, $password, $birth_date/*, $email*/)
 {
     global $connection;
     $query = "SELECT Nome FROM Socio WHERE Nome ='" . $username . "'";
     if (!$result = $connection->query($query)) {
         //Aggiungere redirect
     } else {
-        $query = "INSERT INTO Socio (Nome, DataNascita ,Password) VALUES('" . $username . "','" . "01-01-2024" . "','" . $password . "')";
+        $query = "INSERT INTO Socio (Nome, DataNascita ,Password) VALUES('" . $username . "','" . $birth_date . "','" . $password . "')";
         $connection->query($query);
         $_SESSION['username'] = $username;
     }
