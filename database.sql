@@ -29,3 +29,7 @@ SELECT Count(CodiceSocio) FROM ... WHERE DataPrenotazione = ... and CodiceCampo 
 ALTER TABLE Prenotazione
 ADD FOREIGN KEY (CodiceSocio) REFERENCES Socio(ID),
 ADD FOREIGN KEY (CodiceCampo) REFERENCES Campo(ID);
+
+
+INSERT INTO Campo (ID) 
+VALUES (1), (2), (3), (4);
