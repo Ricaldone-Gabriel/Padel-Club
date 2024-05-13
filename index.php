@@ -2,7 +2,7 @@
 include('partials/header.php'); ?>
 
 
-<body class="bodyBackground d-flex flex-column min-vh-100">
+<body class="bodyBackground d-flex flex-column">
     <title>Home - Padel</title>
     <?php include('partials/navbar.php'); ?>
     <div class="container-fluid">
