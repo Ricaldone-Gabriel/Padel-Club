@@ -17,21 +17,21 @@ include('../partials/header.php');
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div data-mdb-input-init class="form-outline flex-fill mb-0">
-                                                <input type="text" id="name" name="username" class="form-control" minlength="5" maxlength="20"/>
+                                                <input type="text" id="name" name="username" class="form-control" minlength="5" maxlength="20" required/>
                                                 <label class="form-label" for="name">Nome</label>
                                             </div>
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div data-mdb-input-init class="form-outline flex-fill mb-0">
-                                                <input type="password" id="password" name="password" class="form-control" minlength="5" maxlength="20"/>
+                                                <input type="password" id="password" name="password" class="form-control" minlength="5" maxlength="20" required/>
                                                 <label class="form-label" for="password">Password</label>
                                             </div>
                                         </div>
 
                                         <div class="d-flex flex-row align-items-center mb-4">
                                             <div data-mdb-input-init class="form-outline flex-fill mb-0">
-                                                <input type="date" id="birth-date" name="birth-date" class="form-control" min="1920-01-01" max="2006-12-31" />
+                                                <input type="date" id="birth-date" name="birth-date" class="form-control" min="1920-01-01" max="2006-12-31" required/>
                                                 <label class="form-label" for="birth-date">Data di nascita</label>
                                             </div>
                                         </div>
