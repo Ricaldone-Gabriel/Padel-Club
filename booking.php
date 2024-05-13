@@ -1,6 +1,6 @@
 <?php
-include('./includes/config.php');
-include('./includes/functions.php');
+include ('./includes/config.php');
+include ('./includes/functions.php');
 
 if (isset($_POST['submit_registration'])) {
     $username = $_POST['username'];
@@ -17,8 +17,9 @@ if (isset($_POST['submit_login'])) {
 }
 
 if (isset($_POST['submit_booking'])) {
-    $hour = $_POST['hour'];
-    $campo = $_POST['campo'];
+    $date = $_POST['date'];
+    $time = $_POST['time'];
+    $campo = $_POST['campo']; 
 
     $query = "SELECT COUNT(*) AS num_prenotazioni FROM Prenotazione WHERE DataPrenotazione = '$hour' AND CodiceCampo = $campo";
     $result = mysqli_query($connection, $query);
@@ -32,7 +33,7 @@ if (isset($_POST['submit_booking'])) {
     } else {
         echo "Il campo è già pieno per quell'orario.";
     }
-    book_slot($hour, $player1, $player2, $player3, $player4);
+    //book_slot($hour, $campo, $num_prenotazioni);
 }
 
 if (isset($_POST['add_player'])) {
@@ -42,17 +43,21 @@ if (isset($_POST['add_player'])) {
 }
 ?>
 
-<?php include('./partials/header.php') ?>
+<?php include ('./partials/header.php') ?>
 
 <body class="bodyBackground d-flex flex-column min-vh-100">
-    <?php include('./partials/navbarLogged.php') ?>
+    <?php include ('./partials/navbarLogged.php') ?>
 
     <div class="container">
         <h2>Prenota un Campo</h2>
         <form action="dashboard.php" method="post">
-            <label for="hour">Seleziona giorno e orario:</label>
-            <input type="datetime-local" id="hour" name="hour" required>
+            <label for="date">Seleziona la data:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Seleziona l'orario:</label>
+            <input type="time" id="time" name="time" required>
             <br>
+
             <label for="campo">Seleziona il campo:</label>
             <select id="campo" name="campo">
                 <option value="1">Campo 1</option>
@@ -65,4 +70,4 @@ if (isset($_POST['add_player'])) {
         </form>
     </div>
 
-    <?php include('./partials/footer.php') ?>
+    <?php include ('./partials/footer.php') ?>
