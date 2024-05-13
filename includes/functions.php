@@ -44,6 +44,8 @@ function login_user($username, $password)
                 $_SESSION['Nome'] = $record['Nome'];
                 $_SESSION['ID'] = $record['ID'];
             }
+        } else {
+            //redirect a login
         }
     }
 }
