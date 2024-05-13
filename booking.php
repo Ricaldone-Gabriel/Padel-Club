@@ -78,6 +78,13 @@ if (isset($_POST['submit_booking'])) {
                 <option value="2">Campo 2</option>
                 <option value="3">Campo 3</option>
                 <option value="4">Campo 4</option>
+                <?php
+                $query = "SELECT COUNT(*) AS num_campi FROM Campo";
+                $result = mysqli_query($connection, $query);
+                for ($i = 1; $i <= $result; $i++) {
+                    echo "<option value=\"$i\">Campo " . $result . " </option>";
+                }
+                ?>
             </select>
 
             <input type="submit" name="submit_booking" value="Prenota">
