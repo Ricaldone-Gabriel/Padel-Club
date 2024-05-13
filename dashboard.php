@@ -1,6 +1,12 @@
-<?php include('partials/navbarLogged.php') ?>
+<<<<<<< HEAD
+<?php include ('partials/navbarLogged.php') ?>
+<?php include ('includes/config.php') ?>
+<?php include ('includes/functions.php') ?>
+=======
 <?php include('includes/config.php') ?>
 <?php include('includes/functions.php') ?>
+<?php include('partials/navbar.php') ?>
+>>>>>>> 5f72b142eca671672d4b5e370c4e0d593587253e
 <?php
 if (isset($_POST['submit_registration'])) {
     $username = $_POST['username'];
@@ -16,7 +22,7 @@ if (isset($_POST['submit_login'])) {
     login_user($username, $password);
 }
 
-include('partials/header.php') ?>
+include ('partials/header.php') ?>
 
 
 <body class="bodyBackground d-flex flex-column min-vh-100">
@@ -48,9 +54,23 @@ include('partials/header.php') ?>
                         echo "<div class='table-responsive bg-white'>";
                         echo "<h3><caption>Prenotazioni campi</caption></h3>";
                         echo "<table class='table'>";
-                        echo "<thead><tr><th scope='col'>Utente</th><th scope='col'>Campo</th><th scope='col'>Data</th><th scope='col'>Ora</th></thead><tbody>";
+                        echo "<thead><tr><th scope='col'>Utente</th><th scope='col'>Campo</th><th scope='col'>Data</th><th scope='col'>Ora</th><th scope='col'>Soci</th></thead><tbody>";
 
                         while ($row = $result->fetch_assoc()) {
+
+                            $query_numero_soci = "SELECT COUNT(S.ID) AS numero_soci
+                      FROM Prenotazione P
+                      JOIN Socio S ON P.CodiceSocio = S.ID
+                      JOIN Campo C ON P.CodiceCampo = C.ID
+                      WHERE P.DataPrenotazione = '" . $row['DataPrenotazione'] . "' 
+                      AND P.OraPrenotazione = '" . $row['OraPrenotazione'] . "' 
+                      AND C.ID = '" . $row['CodiceCampo'] . "'";
+
+                            if ($result_numero_soci = $connection->query($query_numero_soci)) {
+                                $row_numero_soci = $result_numero_soci->fetch_assoc();
+                            } else {
+                                //errore
+                            }
 
                             if (strtotime($row['DataPrenotazione'] . ' ' . $row['OraPrenotazione']) > time()) {
                                 echo "<tr>";
@@ -58,6 +78,7 @@ include('partials/header.php') ?>
                                 echo "<td style='color: #00B613;'>" . $row['CodiceCampo'] . "</td>";
                                 echo "<td style='color: #00B613;'>" . $row['DataPrenotazione'] . "</td>";
                                 echo "<td style='color: #00B613;'>" . $row['OraPrenotazione'] . "</td>";
+                                echo "<td style='color: #A09F9F;'>" . $row_numero_soci['numero_soci'] . "</td>";
                                 echo "</tr>";
                             } else {
                                 echo "<tr>";
@@ -65,6 +86,7 @@ include('partials/header.php') ?>
                                 echo "<td style='color: #A09F9F;'>" . $row['CodiceCampo'] . "</td>";
                                 echo "<td style='color: #A09F9F;'>" . $row['DataPrenotazione'] . "</td>";
                                 echo "<td style='color: #A09F9F;'>" . $row['OraPrenotazione'] . "</td>";
+                                echo "<td style='color: #A09F9F;'>" . $row_numero_soci['numero_soci'] . "</td>";
                                 echo "</tr>";
                             }
                         }
@@ -93,6 +115,13 @@ include('partials/header.php') ?>
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+    <br><br><br><br><br><br><br><br>
+    <div class="row d-flex align-items-center mt-4" style="width:10%">
+        <button type="button" class="btn btn-outline-danger">Log out</button>
+    </div>
+=======
+>>>>>>> 8fc5b099dcfb04b95f6ed75dd56e990cf51893bf
 
 
-    <?php include('partials/footer.php') ?>
+    <?php include ('partials/footer.php') ?>

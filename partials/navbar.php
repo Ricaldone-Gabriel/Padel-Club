@@ -1,5 +1,5 @@
 <?php
-if (isset($_session['Nome'])) {
+if (isset($_SESSION['Nome'])) {
     echo " <nav class='navbar navbar-expand-lg bg-body-tertiary'> ";
     echo " <div class='container-fluid'> ";
     echo " <a class='navbar-brand' href='index.php'> ";
@@ -19,6 +19,7 @@ if (isset($_session['Nome'])) {
     echo " </div>";
     echo " </nav>";
 } else {
+    echo " <nav class='navbar navbar-expand-lg bg-body-tertiary'> ";
     echo "<div class='container-fluid'>";
     echo "<a class='navbar-brand' href='index.php'>";
     echo "<img src='./images/LogoPadel.png' alt='Logo' width='35' class='d-inline-block align-text-top'>";
@@ -32,4 +33,5 @@ if (isset($_session['Nome'])) {
     echo "</ul>";
     echo "</div>";
     echo "</div>";
+    echo " </nav>";
 }
