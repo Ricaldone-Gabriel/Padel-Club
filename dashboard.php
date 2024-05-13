@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 <?php include ('partials/navbarLogged.php') ?>
 <?php include ('includes/config.php') ?>
 <?php include ('includes/functions.php') ?>
+=======
+<?php include('includes/config.php') ?>
+<?php include('includes/functions.php') ?>
+<?php include('partials/navbar.php') ?>
+>>>>>>> 5f72b142eca671672d4b5e370c4e0d593587253e
 <?php
 if (isset($_POST['submit_registration'])) {
     $username = $_POST['username'];
