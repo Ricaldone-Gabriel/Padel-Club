@@ -17,7 +17,7 @@
                 </li>
 
                 <li class="nav-item ms-3">
-                    <a class="btn btn-outline-dark btn-rounded" href="/Padel-Club/dashboard.php">Dashboard</a>
+                    <a class="btn btn-outline-dark btn-rounded" href="./dashboard.php">Dashboard</a>
                 </li>
             </ul>
         </div>
