@@ -15,7 +15,8 @@ CREATE TABLE Prenotazione (
   ID int(50) NOT NULL AUTO_INCREMENT,
   CodiceSocio int(50) NOT NULL,
   CodiceCampo int(50) NOT NULL,
-  DataPrenotazione datetime NOT NULL, /* format: YYYY-MM-DD HH:MI:SS */
+  DataPrenotazione date NOT NULL, /* format: YYYY-MM-DD */
+  OraPrenotazione time NOT NULL, /* format: hh:mm:ss */
   PRIMARY KEY (ID)
 );
 
