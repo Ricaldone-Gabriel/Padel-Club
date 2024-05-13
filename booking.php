@@ -74,15 +74,12 @@ if (isset($_POST['submit_booking'])) {
 
             <label for="campo">Seleziona il campo:</label>
             <select id="campo" name="campo">
-                <option value="1">Campo 1</option>
-                <option value="2">Campo 2</option>
-                <option value="3">Campo 3</option>
-                <option value="4">Campo 4</option>
                 <?php
-                $query = "SELECT COUNT(*) AS num_campi FROM Campo";
+                $query = "SELECT ID FROM Campo";
                 $result = mysqli_query($connection, $query);
-                for ($i = 1; $i <= $result; $i++) {
-                    echo "<option value=\"$i\">Campo " . $result . " </option>";
+
+                foreach ($result as $record) {
+                    echo "<option value='" . $record['ID'] . "'>Campo " . $record['ID'] . " </option>";
                 }
                 ?>
             </select>
