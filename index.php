@@ -11,7 +11,7 @@ include('partials/header.php'); ?>
         </div>-->
         <div class="card cardIndex">
             <div class="row g-0">
-                <div class="col-md-8 alignVert">
+                <div class="col-md-8 alignVert" style="height:100vh">
                     <div class="card-body align-middle">
                         <h5 class="card-title-index">Soci competitivi</h5>
                         <p class="card-text-index">Unisciti al nostro club di padel! Campi moderni, insegnanti esperti e
@@ -20,22 +20,20 @@ include('partials/header.php'); ?>
                             padel con noi!</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <img src="./images/stock/padel-player.webp" class="img-fluid rounded-start" id="img1" alt="...">
+                <div class="col-md-4" style="height:100vh">
+                    <img src="./images/stock/padel-player.webp" class="img-fluid rounded-start" style="height:100%; width:100%" id="img1" alt="...">
                 </div>
             </div>
         </div>
         <div class="card cardIndex">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="./images/stock/padel-player.webp" class="img-fluid rounded-start" alt="...">
+                    <img src="./images/stock/padel-bottom.jpeg" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8 alignVert">
                     <div class="card-body align-middle">
-                        <h5 class="card-title-index">Card title</h5>
-                        <p class="card-text-index">This is a wider card with supporting text below as a natural lead-in
-                            to
-                            additional content. This content is a little bit longer.</p>
+                        <h5 class="card-title-index">Iscriviti adesso!</h5>
+                        <p class="card-text-index">Non è mai troppo tardi iniziare il padel!</p>
                     </div>
                 </div>
             </div>
