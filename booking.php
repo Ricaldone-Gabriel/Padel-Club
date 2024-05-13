@@ -1,6 +1,6 @@
 <?php
-include ('./includes/config.php');
-include ('./includes/functions.php');
+include('./includes/config.php');
+include('./includes/functions.php');
 
 if (isset($_POST['submit_registration'])) {
     $username = $_POST['username'];
@@ -45,19 +45,28 @@ if (isset($_POST['submit_booking'])) {
 }
 ?>
 
-<?php include ('./partials/header.php') ?>
+<?php include('./partials/header.php') ?>
 
 <body class="bodyBackground d-flex flex-column min-vh-100">
-    <?php include ('./partials/navbarLogged.php') ?>
+    <?php include('./partials/navbarLogged.php') ?>
 
     <div class="container">
         <h2>Prenota un Campo</h2>
-        <form   method="post"> <!-- action="dashboard.php" -->
+        <form method="post"> <!-- action="dashboard.php" -->
             <label for="date">Seleziona la data:</label>
             <input type="date" id="date" name="date" required>
 
             <label for="time">Seleziona l'orario:</label>
-            <input type="time" id="time" name="time" min="08:00:00" max="18:00:00" step="1800" required>
+            <label for="time">Seleziona l'orario:</label>
+            <input type="time" id="time" name="time" min="08:00" max="22:00" step="1800" required list="orari">
+            <datalist id="orari">
+                <?php
+                for ($hour = 8; $hour <= 22; $hour++) {
+                    $time = sprintf("%02d:%02d", $hour);
+                    echo "<option value=\"$time\"></option>";
+                }
+                ?>
+            </datalist>
             <br>
 
             <label for="campo">Seleziona il campo:</label>
@@ -72,4 +81,4 @@ if (isset($_POST['submit_booking'])) {
         </form>
     </div>
 
-    <?php include ('./partials/footer.php') ?>
+    <?php include('./partials/footer.php') ?>
