@@ -5,12 +5,21 @@
 
 .bodyBackground {
     font-family: 'Rubik';
-    height:100%;
+}
+
+.imgSection {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.section  {
+    height:100vh;
+}
+
+#img1 {
+    background-image: url("../images/stock/sportsman-playing-padel-game.jpg");
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
   background-color: #f5f5f5;
 }
