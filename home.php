@@ -5,8 +5,9 @@ include('includes/functions.php');
 if (isset($_POST['submit_registration'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
+    $birth_date = $_POST['birth-date'];
     //$email = $_POST['email'];
-    register_user($username, $password/*, $email*/);
+    register_user($username, $password, $birth_date /*, $email*/);
 }
 
 if (isset($_POST['submit_login'])) {
