@@ -64,7 +64,7 @@ include('partials/header.php') ?>
                         echo "<div class='row justify-content-center'>";
                         echo "<div class='col-12'>";
                         echo "<div class='table-responsive bg-white'>";
-                        echo "<caption>Prenotazioni campi</caption>";
+                        echo "<h3><caption>Prenotazioni campi</caption></h3>";
                         echo "<table class='table'>";
                         echo "<thead><tr><th scope='col'>Utente</th><th scope='col'>Campo</th><th scope='col'>Data</th><th scope='col'>Ora</th></thead><tbody>";
 

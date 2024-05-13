@@ -4,6 +4,8 @@
 }
 
 .bodyBackground {
+    overflow-y: hidden;
+    overflow-x: hidden;
     font-family: 'Rubik';
 }
 
