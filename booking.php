@@ -57,7 +57,6 @@ if (isset($_POST['submit_booking'])) {
             <input type="date" id="date" name="date" required>
 
             <label for="time">Seleziona l'orario:</label>
-            <label for="time">Seleziona l'orario:</label>
             <input type="time" id="time" name="time" min="08:00" max="22:00" step="1800" required list="orari">
             <datalist id="orari">
                 <?php
