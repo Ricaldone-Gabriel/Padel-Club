@@ -15,28 +15,36 @@ if (isset($_POST["Impegna"])) {
    }
 }
 */
-echo "Funziona1!";
 function register_user($username, $password/*, $email*/)
 {
     global $connection;
     $query = "SELECT Nome FROM Socio WHERE Nome ='" . $username . "'";
-    if (!$result = $connection->query($query)) {
-        //Aggiungere redirect
+    if (!$risultato = $connection->query($query)) {
+        echo $query;
     } else {
-        $query = "INSERT INTO Socio (Nome, DataNascita ,Password) VALUES('" . $username . "','" . "01-01-2024" . "','" . $password . "')";
-        $connection->query($query);
-        $_SESSION['username'] = $username;
+        if ($risultato->num_rows > 0) {
+            //redirect al login
+        } else {
+            $query = "INSERT INTO Socio (Nome, DataNascita ,Password) VALUES('" . $username . "','" . "01-01-2024" . "','" . $password . "')";
+            $connection->query($query);
+            login_user($username, $password);
+        }
     }
 }
 
 function login_user($username, $password)
 {
     global $connection;
-    $query = "SELECT Nome FROM Socio WHERE Nome ='" . $username . "' AND Password = '" . $password . "'";
-    if (!$result = $connection->query($query)) {
-        $_SESSION['username'] = $username;
+    $query = "SELECT Nome, ID FROM Socio WHERE Nome ='" . $username . "' AND Password = '" . $password . "'";
+    if (!$risultato = $connection->query($query)) {
+        echo $query;
     } else {
-        //Aggiungere redirect
+        if ($risultato->num_rows > 0) {
+            foreach ($risultato as $record) {
+                $_SESSION['Nome'] = $record['Nome'];
+                $_SESSION['ID'] = $record['ID'];
+            }
+        }
     }
 }
 
