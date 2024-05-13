@@ -9,12 +9,13 @@ include('partials/header.php'); ?>
         <!--<div class="row section mb-3" id="section1">
             <div class="imgSection" id="img1"></div>
         </div>-->
-        <div class="card">
+        <div class="card cardIndex">
             <div class="row g-0">
                 <div class="col-md-8 alignVert">
                     <div class="card-body align-middle">
-                        <h5 class="card-title">Soci competitivi</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        <h5 class="card-title-index">Soci competitivi</h5>
+                        <p class="card-text-index">This is a wider card with supporting text below as a natural lead-in
+                            to
                             additional content. This content is a little bit longer.</p>
                     </div>
                 </div>
@@ -23,15 +24,16 @@ include('partials/header.php'); ?>
                 </div>
             </div>
         </div>
-        <div class="card">
+        <div class="card cardIndex">
             <div class="row g-0">
                 <div class="col-md-4">
                     <img src="./images/stock/padel-player.webp" class="img-fluid rounded-start" alt="...">
                 </div>
                 <div class="col-md-8 alignVert">
                     <div class="card-body align-middle">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                        <h5 class="card-title-index">Card title</h5>
+                        <p class="card-text-index">This is a wider card with supporting text below as a natural lead-in
+                            to
                             additional content. This content is a little bit longer.</p>
                     </div>
                 </div>

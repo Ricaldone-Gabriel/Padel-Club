@@ -31,6 +31,9 @@ if (isset($_POST['submit_booking'])) {
         $codice_socio = $_SESSION['ID'];
 
         // Inserisci i dati nella tabella Prenotazione
+        echo $data_prenotazione . " ";
+        echo $ora_prenotazione . " ";
+        echo $campo;
         $insert_query = "INSERT INTO Prenotazione (CodiceSocio, CodiceCampo, DataPrenotazione, OraPrenotazione) VALUES ($codice_socio, '$campo', '$data_prenotazione', '$ora_prenotazione')";
         $insert_result = mysqli_query($connection, $insert_query);
 
@@ -52,7 +55,8 @@ if (isset($_POST['submit_booking'])) {
 
     <div class="container">
         <h2>Prenota un Campo</h2>
-        <form method="post"> <!-- action="dashboard.php" -->
+        <form method="post">
+            <!-- action="dashboard.php" -->
             <label for="date">Seleziona la data:</label>
             <input type="date" id="date" name="date" required>
 
@@ -62,7 +66,7 @@ if (isset($_POST['submit_booking'])) {
             <datalist id="orari">
                 <?php
                 for ($hour = 8; $hour <= 22; $hour++) {
-                    $time = sprintf("%02d:%02d", $hour);
+                    $time = sprintf("%02d:%02d", $hour, $hour);
                     echo "<option value=\"$time\"></option>";
                 }
                 ?>
