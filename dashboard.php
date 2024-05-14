@@ -72,7 +72,7 @@ include('partials/redirect.php') ?>
                                 echo "<td style='color: #00B613;'>" . $row['CodiceCampo'] . "</td>";
                                 echo "<td style='color: #00B613;'>" . $row['DataPrenotazione'] . "</td>";
                                 echo "<td style='color: #00B613;'>" . $row['OraPrenotazione'] . "</td>";
-                                echo "<td style='color: #A09F9F;'>" . $row_numero_soci['numero_soci'] . "</td>";
+                                echo "<td style='color: #00B613;'>" . $row_numero_soci['numero_soci'] . "</td>";
                                 echo "</tr>";
                             } else {
                                 echo "<tr>";

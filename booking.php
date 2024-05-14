@@ -1,6 +1,6 @@
 <?php
-include('./includes/config.php');
-include('./includes/functions.php');
+include ('./includes/config.php');
+include ('./includes/functions.php');
 $prenotazioneB = 2;
 
 if (isset($_POST['submit_booking'])) {
@@ -8,30 +8,39 @@ if (isset($_POST['submit_booking'])) {
     $ora_prenotazione = $_POST['time'];
     $campo = $_POST['campo'];
 
-    $query = "SELECT COUNT(*) AS num_prenotazioni FROM Prenotazione WHERE DataPrenotazione = '$data_prenotazione $ora_prenotazione' AND CodiceCampo = $campo";
+    $query = "SELECT COUNT(*) AS num_prenotazioni, CodiceCampo, OraPrenotazione, DataPrenotazione  FROM Prenotazione WHERE CodiceSocio = " . $_SESSION['ID'] . " AND DataPrenotazione = '$data_prenotazione' AND OraPrenotazione = '$ora_prenotazione' AND CodiceCampo = $campo";
     $result = mysqli_query($connection, $query);
     $row = mysqli_fetch_assoc($result);
-
-    $num_prenotazioni = $row['num_prenotazioni'];
-
-    if ($num_prenotazioni < 4) {
-        $codice_socio = $_SESSION['ID'];
-        $insert_query = "INSERT INTO Prenotazione (CodiceSocio, CodiceCampo, DataPrenotazione, OraPrenotazione) VALUES ($codice_socio, '$campo', '$data_prenotazione', '$ora_prenotazione')";
-        $insert_result = mysqli_query($connection, $insert_query);
-
-        if ($insert_result) {
-            $prenotazioneB = 1;
+    
+    if(!$row['num_prenotazioni'] > 0){
+        $query = "SELECT COUNT(*)  as num_prenotazioni
+        FROM prenotazione P, campo C
+        WHERE P.CodiceCampo = C.ID
+        AND p.CodiceCampo = '" . $row['CodiceCampo'] . "'
+        AND p.OraPrenotazione = '" . $row['OraPrenotazione'] . "'
+        AND p.DataPrenotazione = '" . $row['DataPrenotazione'] . "'";
+        $result = mysqli_query($connection, $query);
+        $row = mysqli_fetch_assoc($result);
+    
+        if ($row['num_prenotazioni'] < 4) {
+            $codice_socio = $_SESSION['ID'];
+            $insert_query = "INSERT INTO Prenotazione (CodiceSocio, CodiceCampo, DataPrenotazione, OraPrenotazione) VALUES ($codice_socio, '$campo', '$data_prenotazione', '$ora_prenotazione')";
+            $insert_result = mysqli_query($connection, $insert_query);
+    
+            if ($insert_result) {
+                $prenotazioneB = 1;
+            } else {
+                $prenotazioneB = 0;
+            }
         } else {
-            $prenotazioneB = 0;
+            echo "Il campo è già pieno per quell'orario.";
         }
-    } else {
-        echo "Il campo è già pieno per quell'orario.";
     }
 }
 ?>
 
-<?php include('./partials/header.php') ?>
-<?php include('partials/redirect.php') ?>
+<?php include ('./partials/header.php') ?>
+<?php include ('partials/redirect.php') ?>
 
 <body class="bodyBackground d-flex flex-column min-vh-100">
     <?php include ('./partials/navbar.php') ?>
@@ -79,7 +88,6 @@ if (isset($_POST['submit_booking'])) {
         ?>
         <div class="row g-0">
             <?php
-            echo $_SESSION['ID'];
             $query = "SELECT P.CodiceSocio, P.CodiceCampo, P.DataPrenotazione, P.OraPrenotazione
             FROM Prenotazione P
             WHERE P.CodiceSocio != '" . $_SESSION['ID'] . "'
@@ -99,13 +107,12 @@ if (isset($_POST['submit_booking'])) {
 
                 while ($row = $risultato->fetch_assoc()) {
 
-                    $query_numero_soci = "SELECT COUNT(S.ID) AS numero_soci
-                      FROM Prenotazione P
-                      JOIN Socio S ON P.CodiceSocio = S.ID
-                      JOIN Campo C ON P.CodiceCampo = C.ID
-                      WHERE P.DataPrenotazione = '" . $row['DataPrenotazione'] . "' 
-                      AND P.OraPrenotazione = '" . $row['OraPrenotazione'] . "' 
-                      AND C.ID = '" . $row['CodiceCampo'] . "'";
+                    $query_numero_soci = "SELECT COUNT(*)  as numero_soci
+                    FROM prenotazione P, campo C
+                    WHERE P.CodiceCampo = C.ID
+                    AND p.CodiceCampo = '" . $row['CodiceCampo'] . "'
+                    AND p.OraPrenotazione = '" . $row['OraPrenotazione'] . "'
+                    AND p.DataPrenotazione = '" . $row['DataPrenotazione'] . "'";
 
                     if ($result_numero_soci = $connection->query($query_numero_soci)) {
                         $row_numero_soci = $result_numero_soci->fetch_assoc();
