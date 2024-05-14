@@ -18,9 +18,6 @@ if (isset($_POST["Impegna"])) {
 function register_user($username, $password, $birth_date/*, $email*/)
 {
     global $connection;
-    session_unset();
-    session_destroy();
-    session_start();
     $query = "SELECT Nome FROM Socio WHERE Nome ='" . $username . "'";
     if (!$risultato = $connection->query($query)) {
         //Aggiungere redirect
