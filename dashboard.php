@@ -15,8 +15,8 @@ if (isset($_POST['submit_login'])) {
     $password = $_POST['password'];
     login_user($username, $password);
 }
-
-include('partials/navbar.php') ?>
+include('partials/redirect.php') ?>
+<?php include('partials/navbar.php') ?>
 <?php include('partials/header.php') ?>
 
 

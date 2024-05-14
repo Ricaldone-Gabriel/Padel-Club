@@ -31,6 +31,7 @@ if (isset($_POST['submit_booking'])) {
 ?>
 
 <?php include('./partials/header.php') ?>
+<?php include('partials/redirect.php') ?>
 
 <body class="bodyBackground d-flex flex-column min-vh-100">
     <?php include('./partials/navbar.php') ?>
