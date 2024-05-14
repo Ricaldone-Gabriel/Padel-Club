@@ -53,12 +53,12 @@ include('partials/redirect.php') ?>
 
                         while ($row = $result->fetch_assoc()) {
 
-                            $query_numero_soci = "SELECT COUNT(*) 
+                            $query_numero_soci = "SELECT COUNT(*)  as numero_soci
                             FROM prenotazione P, campo C
                             WHERE P.CodiceCampo = C.ID
                             AND p.CodiceCampo = '" . $row['CodiceCampo'] . "'
                             AND p.OraPrenotazione = '" . $row['OraPrenotazione'] . "'
-                            AND p.DataPrenotazione = '" . $row['DataPrenotazione'] . "''";
+                            AND p.DataPrenotazione = '" . $row['DataPrenotazione'] . "'";
 
                             if ($result_numero_soci = $connection->query($query_numero_soci)) {
                                 $row_numero_soci = $result_numero_soci->fetch_assoc();

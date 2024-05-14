@@ -115,19 +115,11 @@ if (isset($_POST['submit_booking'])) {
 
                     if (strtotime($row['DataPrenotazione'] . ' ' . $row['OraPrenotazione']) > time()) {
                         echo "<tr>";
-                        echo "<td style='color: #00B613;'>" . $row['CodiceSocio'] . "</td>";
-                        echo "<td style='color: #00B613;'>" . $row['CodiceCampo'] . "</td>";
-                        echo "<td style='color: #00B613;'>" . $row['DataPrenotazione'] . "</td>";
-                        echo "<td style='color: #00B613;'>" . $row['OraPrenotazione'] . "</td>";
-                        echo "<td style='color: #A09F9F;'>" . $row_numero_soci['numero_soci'] . "</td>";
-                        echo "</tr>";
-                    } else {
-                        echo "<tr>";
-                        echo "<td style='color: #A09F9F;'>" . $row['CodiceSocio'] . "</td>";
-                        echo "<td style='color: #A09F9F;'>" . $row['CodiceCampo'] . "</td>";
-                        echo "<td style='color: #A09F9F;'>" . $row['DataPrenotazione'] . "</td>";
-                        echo "<td style='color: #A09F9F;'>" . $row['OraPrenotazione'] . "</td>";
-                        echo "<td style='color: #A09F9F;'>" . $row_numero_soci['numero_soci'] . "</td>";
+                        echo "<td>" . $row['CodiceSocio'] . "</td>";
+                        echo "<td>" . $row['CodiceCampo'] . "</td>";
+                        echo "<td>" . $row['DataPrenotazione'] . "</td>";
+                        echo "<td>" . $row['OraPrenotazione'] . "</td>";
+                        echo "<td>" . $row_numero_soci['numero_soci'] . "</td>";
                         echo "</tr>";
                     }
                 }
