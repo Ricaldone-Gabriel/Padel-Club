@@ -1,7 +1,7 @@
 <?php include('includes/config.php') ?>
 <?php include('includes/functions.php') ?>
-<?php include('partials/navbar.php') ?>
 <?php
+
 if (isset($_POST['submit_registration'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -16,7 +16,8 @@ if (isset($_POST['submit_login'])) {
     login_user($username, $password);
 }
 
-include('partials/header.php') ?>
+include('partials/navbar.php') ?>
+<?php include('partials/header.php') ?>
 
 
 <body class="bodyBackground d-flex flex-column min-vh-100">
