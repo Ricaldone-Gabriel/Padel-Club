@@ -1,20 +1,7 @@
 <?php
-include ('./includes/config.php');
-include ('./includes/functions.php');
-
-if (isset($_POST['submit_registration'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    $birth_date = $_POST['birth-date'];
-    //$email = $_POST['email'];
-    register_user($username, $password, $birth_date /*, $email*/);
-}
-
-if (isset($_POST['submit_login'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    login_user($username, $password);
-}
+include('./includes/config.php');
+include('./includes/functions.php');
+$prenotazioneB = 2;
 
 if (isset($_POST['submit_booking'])) {
     $data_prenotazione = $_POST['date'];
@@ -29,18 +16,13 @@ if (isset($_POST['submit_booking'])) {
 
     if ($num_prenotazioni < 4) {
         $codice_socio = $_SESSION['ID'];
-
-        // Inserisci i dati nella tabella Prenotazione
-        echo $data_prenotazione . " ";
-        echo $ora_prenotazione . " ";
-        echo $campo;
         $insert_query = "INSERT INTO Prenotazione (CodiceSocio, CodiceCampo, DataPrenotazione, OraPrenotazione) VALUES ($codice_socio, '$campo', '$data_prenotazione', '$ora_prenotazione')";
         $insert_result = mysqli_query($connection, $insert_query);
 
         if ($insert_result) {
-            echo "Prenotazione effettuata con successo!";
+            $prenotazioneB = 1;
         } else {
-            echo "Si è verificato un errore durante la prenotazione: " . mysqli_error($connection);
+            $prenotazioneB = 0;
         }
     } else {
         echo "Il campo è già pieno per quell'orario.";
@@ -48,7 +30,8 @@ if (isset($_POST['submit_booking'])) {
 }
 ?>
 
-<?php include ('./partials/header.php') ?>
+<?php include('./partials/header.php') ?>
+<?php include('partials/redirect.php') ?>
 
 <body class="bodyBackground d-flex flex-column min-vh-100">
     <?php include ('./partials/navbar.php') ?>
@@ -86,6 +69,14 @@ if (isset($_POST['submit_booking'])) {
 
             <input type="submit" name="submit_booking" value="Prenota">
         </form>
+        <?php
+        if ($prenotazioneB == 0) {
+            echo "Errore nella prenotazione.";
+        } else if ($prenotazioneB == 1) {
+            echo "Il campo è stato prenotato con successo.";
+        }
+
+        ?>
         <div class="row g-0">
             <?php
             echo $_SESSION['ID'];
