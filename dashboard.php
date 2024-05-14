@@ -1,6 +1,6 @@
-<?php include('includes/config.php') ?>
-<?php include('includes/functions.php') ?>
-<?php include('partials/navbar.php') ?>
+<?php include ('includes/config.php') ?>
+<?php include ('includes/functions.php') ?>
+<?php include ('partials/navbar.php') ?>
 <?php
 if (isset($_POST['submit_registration'])) {
     $username = $_POST['username'];
@@ -16,7 +16,7 @@ if (isset($_POST['submit_login'])) {
     login_user($username, $password);
 }
 
-include('partials/header.php') ?>
+include ('partials/header.php') ?>
 
 
 <body class="bodyBackground d-flex flex-column min-vh-100">
@@ -104,7 +104,9 @@ include('partials/header.php') ?>
                     ?>
                 </div>
                 <div class="row d-flex justify-content-center mb-3">
-                    <button type="button" class="btn btn-outline-danger" style="width:50%">Log out</button>
+                    <form method="POST" action="index.php">
+                        <button name="log-out" type="submit" class="btn btn-outline-danger" style="width:50%">Log out</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -113,4 +115,4 @@ include('partials/header.php') ?>
 
 
 
-    <?php include('partials/footer.php') ?>
+    <?php include ('partials/footer.php') ?>

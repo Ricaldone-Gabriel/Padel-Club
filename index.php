@@ -1,10 +1,17 @@
-<?php
-include('partials/header.php'); ?>
+<?php include ('includes/config.php'); ?>
+<?php include ('partials/header.php'); ?>
 
+
+<?php
+if (isset($_POST['log-out'])) {
+    session_unset();
+    session_destroy();
+}
+?>
 
 <body class="bodyBackground d-flex flex-column">
     <title>Home - Padel</title>
-    <?php include('partials/navbar.php'); ?>
+    <?php include ('partials/navbar.php'); ?>
     <div class="container-fluid">
         <!--<div class="row section mb-3" id="section1">
             <div class="imgSection" id="img1"></div>
@@ -21,7 +28,8 @@ include('partials/header.php'); ?>
                     </div>
                 </div>
                 <div class="col-md-4" style="height:100vh">
-                    <img src="./images/stock/padel-player.webp" class="img-fluid rounded-start" style="height:100%; width:100%" id="img1" alt="...">
+                    <img src="./images/stock/padel-player.webp" class="img-fluid rounded-start"
+                        style="height:100%; width:100%" id="img1" alt="...">
                 </div>
             </div>
         </div>
@@ -39,4 +47,4 @@ include('partials/header.php'); ?>
             </div>
         </div>
     </div>
-    <?php include('partials/footer.php'); ?>
+    <?php include ('partials/footer.php'); ?>
