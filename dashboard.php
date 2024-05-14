@@ -1,5 +1,5 @@
-<?php include ('includes/config.php') ?>
-<?php include ('includes/functions.php') ?>
+<?php include('includes/config.php') ?>
+<?php include('includes/functions.php') ?>
 <?php
 
 if (isset($_POST['submit_registration'])) {
@@ -104,11 +104,10 @@ include('partials/redirect.php') ?>
                     }
                     ?>
                 </div>
-                <div class="row d-flex justify-content-center mb-3">
-                    <form method="POST" action="index.php">
-                        <button name="log-out" type="submit" class="btn btn-outline-danger" style="width:50%">Log out</button>
-                    </form>
-                </div>
+                <form method="POST" action="index.php" class="row d-flex justify-content-center mb-3">
+                    <button name="log-out" type="submit" class="btn btn-outline-danger" style="width:50%">Log
+                        out</button>
+                </form>
             </div>
         </div>
     </div>
@@ -116,4 +115,4 @@ include('partials/redirect.php') ?>
 
 
 
-    <?php include ('partials/footer.php') ?>
+    <?php include('partials/footer.php') ?>
