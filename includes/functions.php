@@ -25,7 +25,7 @@ function register_user($username, $password, $birth_date/*, $email*/)
         if ($risultato->num_rows > 0) {
             //redirect al login
         } else {
-            $query = "INSERT INTO Socio (Nome, DataNascita,Password) VALUES('" . $username . "','" . $birth_date . "','" . $password . "')";
+            $query = "INSERT INTO Socio (Nome, DataNascita, Password) VALUES('" . $username . "','" . $birth_date . "','" . $password . "')";
             $connection->query($query);
             $_SESSION['Nome'] = $username;
 
